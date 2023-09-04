@@ -40,10 +40,13 @@ namespace Blackjack
 	void playerTurn(Deck& deck, Hand& playerHand)
 	{
 		char playerChoice{};
-		while (playerChoice != 's' && playerHand.getScore() < 21)
+		while (playerChoice != 's')
 		{			
 			std::cout << "Your hand:\t";
 			playerHand.print();
+
+			if (playerHand.getScore() >= 21)
+				break;
 
 			std::cout << "Would you like to hit or stand? (h/s): ";
 			std::cin >> playerChoice;
