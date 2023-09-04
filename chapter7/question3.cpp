@@ -5,7 +5,7 @@
 namespace gameconfig
 {
 	constexpr int guesses{ 7 };
-	constexpr int boundMin{ -50 };
+	constexpr int boundMin{ 0 };
 	constexpr int boundMax{ 200 };
 }
 
@@ -62,7 +62,6 @@ bool isRetry()
 	do
 	{
 		std::cout << "Would you like to play again (y/n)? ";
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		std::cin >> option;
 	} while (option != 'y' && option != 'n');
 
@@ -90,11 +89,7 @@ void question3()
 		else
 			std::cout << "Sorry, you lost. The correct number was " << number << ".\n";
 
-		if (!isRetry())
-		{
-			std::cout << "Thank you for playing.";
-			break;
-		}
+	} while (isRetry());
 
-	} while (true);
+	std::cout << "Thank you for playing.";
 }
